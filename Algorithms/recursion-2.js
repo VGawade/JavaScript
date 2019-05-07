@@ -62,18 +62,21 @@ const familyTree = {
     }
   ]
 };
-
-function getFamilyMembers(family) {
+function getFamilyMembers(family, newArray = []) {
   if (Array.isArray(family)) {
-    return family.reduce((accumulator, currentValue) => {
-      getFamilyMembers(currentValue);
-      accumulator.concat(currentValue.name);
+    let members = family.reduce((accumulator, currentValue) => {
+      getFamilyMembers(currentValue, newArray);
+      return accumulator.concat(currentValue.name);
     }, []);
+    newArray.push(...members);
   } else {
     for (let subdep of Object.values(family)) {
-      console.log(subdep);
-      //sum += sumSalaries(subdep);
+      if (Array.isArray(subdep)) {
+        getFamilyMembers(subdep, newArray);
+      }
     }
-    //return sum;
   }
+  return newArray;
 }
+var returnedArray = getFamilyMembers(familyTree);
+//console.log(returnedArray);
