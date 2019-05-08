@@ -1,2 +1,3 @@
 # JavaScript
-It includes all practice of Javascript
+
+1.  Algorithms
