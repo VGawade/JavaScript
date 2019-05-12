@@ -27,10 +27,10 @@ var employees = [
   { name: 'C', age: 19 }
 ];
 
-function filterDuplicateObjects() {
+function filterDuplicateObjects(data) {
   const employeeNames = [];
   const filteredEmployees = [];
-  employees.forEach(employee => {
+  data.forEach(employee => {
     if (employeeNames.indexOf(employee.name.toLowerCase()) === -1) {
       employeeNames.push(employee.name.toLowerCase());
       filteredEmployees.push(employee);
@@ -39,4 +39,4 @@ function filterDuplicateObjects() {
   return filteredEmployees;
 }
 
-filterDuplicateObjects();
+filterDuplicateObjects(employees);
